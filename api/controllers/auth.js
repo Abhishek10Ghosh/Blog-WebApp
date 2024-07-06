@@ -56,14 +56,18 @@ export const login =(req,res) => {
         if(!isPasswordCorrect) return res.status(400).json("wrong username or password")
 
         // jwt to avoid password storage in local storage
+        // console.log(data[0])
         const token = jwt.sign({id:data[0].id},"jwtkey")
         // this token carries id with it to check if the one logged in same as the one writing the post
         // therfore allowing him to make changes else not
-
+        // console.log(token)
+        // console.log("yo")
+        const {password,...other} = data[0]
         // store this token as cookie
-        // res.cookie("access_token",token,{
-        //     httpOn
-        // })
+        // only the encrypted user info apart from password is stroed in cookie
+        res.cookie("access_token",token,{
+            httpOnly:true
+        }).status(200).json(other)
 
     })
 
@@ -72,4 +76,11 @@ export const login =(req,res) => {
 }
 export const logout =(req,res) => {
     
+    res.clearCookie("access_token",{
+        sameSite:"none",
+        secure:true
+    }).status(200).json("User has been logged out!")
+
+
+
 }

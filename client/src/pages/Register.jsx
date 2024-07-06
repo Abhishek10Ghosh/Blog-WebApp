@@ -24,8 +24,9 @@ const Register = () => {
     try {
       // http://localhost:8800/api/auth/register
       // try proxy in package.json to give relative path instead of direct path
+      // set up proxy to save cookies in local storage
 
-      await axios.post("http://localhost:8800/api/auth/register",inputs)
+      await axios.post("/auth/register",inputs)
       naivgate("/login")
 
       // const res = await axios.post("http://localhost:8800/api/auth/register",inputs)
