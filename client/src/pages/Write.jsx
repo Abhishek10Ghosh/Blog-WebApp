@@ -10,8 +10,8 @@ const Write = () => {
   const state = useLocation().state;
   const navigate = useNavigate()
 
-  const [value, setValue] = useState(state?.title || "");
-  const [title, setTitle] = useState(state?.desc || "");
+  const [value, setValue] = useState(state?.desc || "");
+  const [title, setTitle] = useState(state?.title || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
@@ -34,7 +34,7 @@ const Write = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const imgUrl = await upload();
-
+    console.log(state);
     try {
       state
         ? await axios.put(`/posts/${state.id}`, {

@@ -61,7 +61,7 @@ const Single = () => {
           </div>
           {/* show this div is current user is the owner of this post */}
           {currentUser?.username === post.username &&  <div className="edit">
-            <Link to={`/write?edit=2`} state={post}>
+            <Link to={`/write?edit=${postId}`} state={post}>
               <img src={Edit} />
             </Link>
             <img onClick={handleDelete} src={Delete} />

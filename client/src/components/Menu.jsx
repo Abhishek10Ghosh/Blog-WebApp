@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 // const posts = [
@@ -58,7 +58,7 @@ const Menu = ({cat}) => {
         <div className='post' key={post.id}>
             <img src={`../upload/${post.img}`}/>
             <h2>{post.title}</h2>
-            <button>More</button>
+            <button><Link to={`/post/${post.id}`}>More</Link></button>
         </div>
       ))}
     </div>
